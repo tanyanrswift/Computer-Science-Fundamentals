@@ -13,14 +13,14 @@ Write the following algorithms in pseudocode:
       IF number 1 is greater than number 2 THEN
         PRINT number 1
       ELSE
-        PRINT number2
+        PRINT number 2
       END IF
   2. Create a function that prints out the numbers from 1 to 100.
-      SET number to 1
-      FOR each number from 1 to 100
+      SET number to 0
+      WHILE number is less than 100
         INCREMENT number by 1
-        PRINT the number
-      END FOR
+        PRINT number
+      END
   3. Create a function that searches for a specific entry in a phonebook.
       INPUT an entry and a phonebook
       SET phonebook to first phonebook entry
