@@ -1,0 +1,50 @@
+1. What is the main difference between a stack and a queue?
+  A stack implements a last in first out priority collection. A queue implements a first in first out priority collection.
+
+2. What are the similarities between stacks and queues?
+  Both stacks and queues are linear data structures. They also both have an input and an output/exit point even though they
+  have a different priority.
+
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO options in a word processor such as Microsoft Word. Which data structure would you use
+for each option and why?
+  I would use a stack for the UNDO option because the last character that was typed (last in) would be the first character you would remove (first out). I would
+  use a queue data structure for a REDO option because the last character that was deleted (first in) would be the first character you would redo (first out).
+
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
+  First I will loop through the string like an array to find the individual characters. Then I will add the
+  characters back together to form a new string.
+
+  function reverseString(string) {
+    var newString = '';
+    for(var i = 0; i < string.length; i++){
+      newString = string[i] + newString;
+    }
+    return newString;
+  }
+
+2. Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure. Since the internal list is
+not the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
+
+  FUNCTION pop
+    SET the element at the stack position index to temp
+    DECREMENT the stack position index by 1
+    RETURN temp
+  END FUNCTION
+
+  function getsImpatient(people){
+    people.pop();
+    return people;
+  }
+
+3.Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+
+  FUNCTION enqueue(element)
+    APPEND element to the end of the list
+  END FUNCTION
+
+  FUNCTION dequeue
+    SET temp to the first element
+    REMOVE FIRST element of list from list
+    RETURN temp
+  END FUNCTION

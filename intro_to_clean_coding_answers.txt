@@ -24,13 +24,13 @@ END FUNCTION
   naming in order to be able to remove these.
 
   FUNCTION convertTemperatures(temperature, unit)
-  IF unit = "F" THEN
-  SET result to (temperature−32) * (5/9)
-  PRINT result
-  ELSE IF unit = "C" THEN
-  SET result to temperature * 1.8000 + 32.00
-  PRINT result
-  END IF
+    IF unit = "F" THEN
+      SET result to (temperature−32) * (5/9)
+      PRINT result
+    ELSE IF unit = "C" THEN
+      SET result to temperature * 1.8000 + 32.00
+      PRINT result
+    END IF
   END FUNCTION
 
 4. Would you consider the following to be clean code? Explain why or why not? If not, refactor the code.
@@ -148,9 +148,7 @@ least twice in the array, and false if every element is distinct.
       for(var j = i + 1; j < integers.length; j++) {
         if(integers[i] === integers[j]) {
           return true;
-        } else {
-          return false;
         }
       }
-    }
+    } return false;
   }
