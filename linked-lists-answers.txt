@@ -1,0 +1,50 @@
+Memory Questions
+1. Where, and in what order, does the processor look for a piece of data?
+  The processor will look for a piece of data in four different locations. It starts with the registers, then the cache, then the memory, and finally the
+  persistent storage.
+
+2. Assuming a total size of 4 Gigabytes and 16-bit memory locations, what number of locations does the RAM provide?
+  This will provide about 4 trillion locations for the RAM (about 4 trillion for the 4 Gigabytes, and 16 for the 16-bit memory locations).
+
+3. What’s the difference between volatile and persistent memory and which types exist in our memory pyramid?
+  With volatile memory, data and stored information is lost when a power source is removed. Volatile memory exists in our memory pyramid.
+
+
+
+1. What are some pros and cons of using linked lists instead of arrays?
+  Linked lists are able to grow much larger in size than an array because they are stored in nodes which are independent, and can be stored anywhere in
+  available memory. This is good because we can store more data and take up less space. However, a downside to using linked lists is that they are slower
+  to find data within, because you must access them in order to find the data that you are looking for. This can be a much slower process than accessing
+  the index of an element of an array, which can be accessed immediately with the index.
+
+2. Come up with a real world example of a linked list.
+  A real world example of a linked list could be an elevator traveling through floors of a building. Each floor in the building is connected to the others
+  like the nodes in a linked list. It is a slow process as well because you have to travel through all the intermediary floors to get to the one you want
+  to get to.
+
+
+1. The linked list push function should take a value, create a node, and add it to the end of a list. Below is pseudocode for a push function for a singly
+linked list. However, there is something wrong with it. Submit both an explanation of the bug and a functional implementation of the method.
+
+  FUNCTION push(element)
+  CREATE node
+  SET node.value TO element
+  SET node.next TO null
+
+  IF the head node does not exist
+   THEN SET head to node
+  ELSE
+   SET current to head
+   SET current.next to node
+  END IF
+  END FUNCTION
+
+2. Given an unsorted singly linked list, remove all duplicates from the linked list.
+  Example
+  Input: a -> c -> d -> d -> a
+  Output: a -> c -> d
+
+3. Given an unsorted singly linked list, reverse it.
+  Example
+  Input: a -> b -> c -> d
+  Output: d -> c -> b -> a
