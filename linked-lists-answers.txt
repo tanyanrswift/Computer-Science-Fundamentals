@@ -27,24 +27,38 @@ Memory Questions
 linked list. However, there is something wrong with it. Submit both an explanation of the bug and a functional implementation of the method.
 
   FUNCTION push(element)
-  CREATE node
-  SET node.value TO element
-  SET node.next TO null
+    CREATE node
+    SET node.value TO element
+    SET node.next TO null
 
-  IF the head node does not exist
-   THEN SET head to node
-  ELSE
-   SET current to head
-   SET current.next to node
-  END IF
+    IF the head node does not exist
+      THEN SET head to node
+    ELSE
+      SET current to head
+      SET current.next to node
+    END IF
   END FUNCTION
+
+
 
 2. Given an unsorted singly linked list, remove all duplicates from the linked list.
   Example
   Input: a -> c -> d -> d -> a
   Output: a -> c -> d
 
+
+
 3. Given an unsorted singly linked list, reverse it.
   Example
   Input: a -> b -> c -> d
   Output: d -> c -> b -> a
+
+  function reverseLinkedList(head) {
+    if(!head || !head.next) {
+      return head;
+    }
+    var temp = reverse(head.next);
+    head.next.next = head;
+    head.next = undefined;
+    return temp;
+  }
