@@ -43,6 +43,10 @@ not the same as defined in the checkpoint, it may help to rewrite the pseudocode
     APPEND element to the end of the list
   END FUNCTION
 
+  function enqueue(element) {
+    
+  }
+
   FUNCTION dequeue
     SET temp to the first element
     REMOVE FIRST element of list from list
