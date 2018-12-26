@@ -65,15 +65,15 @@ function push(element) {
   We want to compare the first element to all the other elements, then remove the duplicates, then compare the second element to all remaining elements,
   etc. Then we want to display the remaining elements.
 
+
   function removeDuplicates(nodes) {
-    while(current.next){ //while there is a next node, we want to loop through all the nodes
+    current = nodes.head.next;
+    while(current){ //while there is a next node, we want to loop through all the nodes
       if(nodes.head === nodes.current){ //if the first node is equal to the current node
         //remove node
-      } else {
-        //do nothing
       }
       while(current.next){ //we want to loop through the nodes again as long as there is a next node
-        if(nodes.current === nodess.next){
+        if(nodes.current === nodes.next){
           //remove node
         } else {
           return nodes;
