@@ -32,9 +32,9 @@ not the same as defined in the checkpoint, it may help to rewrite the pseudocode
     RETURN temp
   END FUNCTION
 
-  function getsImpatient(people){
-    people.pop();
-    return people;
+  function pop(stack){
+    stack.pop();
+    return stack;
   }
 
 3.Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
