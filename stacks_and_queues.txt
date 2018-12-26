@@ -26,18 +26,48 @@ for each option and why?
 2. Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure. Since the internal list is
 not the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
 
-  FUNCTION pop
-    SET the element at the stack position index to temp
-    DECREMENT the stack position index by 1
+  FUNCTION enqueue(element)
+    APPEND element to the end of the list
+  END FUNCTION
+
+  FUNCTION dequeue
+    SET temp to the first element
+    REMOVE FIRST element of list from list
     RETURN temp
   END FUNCTION
 
-  function pop(stack){
-    stack.pop();
-    return stack;
+  FUNCTION pop
+    FOR all elements in queue
+      set temp to dequeue
+      enqueue temp
+    END FOR
+    RETURN dequeue
+
+  class Queue {
+    constructor() {
+      this.queue = [];
+    }
+
+    enqueue(element) {
+      this.queue.push(element);
+    }
+
+    dequeue() {
+      var temp = this.queue[0];
+      this.queue.shift()
+        return temp;
+    }
+
+    for(var i = 0; i < queue.length-1; i++) {
+      var temp = this.dequeue();
+      this.enqueue(temp);
+    }
+      return dequeue();
   }
 
-3.Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+
+1.Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.
+  First I will define a queue class. Then I will follow the pseudocode outlined in the checkpoint to implement the functions.
 
   FUNCTION enqueue(element)
     APPEND element to the end of the list
@@ -59,9 +89,8 @@ class Queue {
   }
 
   dequeue() {
-    //this.queue.shift()
-    for(var i = 0; this.queue.length; i++) {
-      return this.queue[0];
-    }
+    var temp = this.queue[0];
+    this.queue.shift()
+      return temp;
   }
 }
