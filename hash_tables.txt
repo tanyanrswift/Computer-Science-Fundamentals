@@ -21,12 +21,88 @@
     -All of the books checked out from a library by a particular individual.
       object
     -The primary and secondary phone numbers for a contact.
-      hash table
-    -Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone
+      object
+
+6. Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone
     numbers. Store this information in a hash table.
 
-    -Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+    var HashTable = function() {
+      var array = [];
+      var size = 13;
+    }
 
-    -Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary
+    this.add = function(key, value) {
+      var index = hash(key, size);
+      if (array[index] === undefined) {
+        array[index] = [
+          [key, value]
+        ];
+      } else {
+        var inserted = false;
+        for (var i = 0; i < array[index].length; i++) {
+          if (array[index][i][0] === key) {
+            array[index][i][i] = value;
+            inserted = true;
+          }
+        }
+        if (inserted === false){
+          array[index].push([key, value]);
+        }
+      }
+    };
+
+    this.lookup = function(key) {
+      var index = hash(key, size);
+      if (array[index] === undefined) {
+        return undefined;
+      } else {
+        for (var i = 0; i < array[index].length; i++) {
+          if (array[index][i][0] === key) {
+            return array[index][i][i];
+          }
+        }
+      }
+    };
+
+
+    class CustomerInfo {
+      constructor(name, address, phoneNumber) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.size = 13;
+        this.customers = new Array(this.size);
+      }
+
+      hash(text, max){
+        var total = 0;
+        for(var i = 0; i < text.length; i++){
+          total += text.charCodeAt(i);
+        }
+        return total % max;
+      }
+
+      add(name, address, phoneNumber){
+        var customer = new CustomerInfo(name, address, phoneNumber);
+        var hashedString = hash(phoneNumber);
+        Array.slice(1, 0, hashedString);
+      }
+
+      lookUpCustomer(phoneNumber){
+        var hashedString = hash(phoneNumber);
+        for(var i = 0; i < this.customerInfo.length; i++) {
+          if(hashedString === this.customerInfo.phoneNumber) {
+            return this.customerInfo.name;
+          } else {
+            return 'Customer cannot be found';
+          }
+        }
+      }
+    }
+
+
+7. Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+
+
+8. Build a system that allows digital copies of newspapers to be entered and searched by publisher and publication date. Use hash tables to store the necessary
     data.
-      
