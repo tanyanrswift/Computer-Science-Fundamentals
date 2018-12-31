@@ -15,6 +15,7 @@
   Log-Linear growth
   Quadratic growth
   Exponential growth
+  Cubic growth
 
 5. Choose one of the algorithmic growth rates from the last question and make a comparison to a real-life situation.
 
