@@ -115,7 +115,6 @@ function push(element) {
       }
     }
   }
-    const ll = new LinkedList();
 
 
   function removeDuplicates(nodes) {
