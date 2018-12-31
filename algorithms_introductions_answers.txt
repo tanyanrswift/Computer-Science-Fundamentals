@@ -1,0 +1,51 @@
+1. Using proper pseudo-code, describe the following primitive algorithms:
+    -Making coffee;
+      FUNCTION make coffee
+        Gather items needed
+        Insert coffee filter in machine
+        Measure out coffee
+        Put coffee into the machine
+        Measure out water
+        Put water into the machine
+        Turn machine on and let run
+        Place coffee in cup
+      END
+
+    -Washing dishes;
+      FUNCTION wash dishes
+        Place dishes in sink
+        Put soap on dishes
+        IF scrubbing is required
+          THEN scrub dishes
+          THEN rinse dishes
+        ELSE
+          rinse dishes
+        END IF
+        Dry dishes with towel
+      END
+
+    -A choice of your own.
+      FUNCTION cook eggs
+        Gather ingredients
+        Turn on stove
+        IF making scrambled eggs
+          THEN whip eggs, dump in pan, stir in pan
+        ELSE
+          crack egg in pan
+        Flip eggs
+        Place eggs from pan to plate
+      END
+
+2. As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies
+who created an algorithm that made them successful, e.g., Google's search algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing a product).
+Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out?
+    1. Netflix-They use an algorithm that predicts what movies/TV shows you will enjoy. They stand out because they are able to successfully pick out things that a consumer
+    would find interesting, and this draws a user in to their available movies/TV shows.
+    2. Facebook-They use an algorithm to find friends that you might know. They stand out because they are able to connect people with others they may not otherwise be in
+    contact with and it is appealing to be able to communicate easily with others.
+    3. UPS-They use algorithms to determine best routes. This leads to success because they are able to reduce fuel/overhead costs and also deliver packages at a faster
+    rate.
+
+3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+  An efficient algorithm will not go through steps that are unnecessary. In other words, it will go through the simplest and most logical path to accomplish what it is
+  looking to accomplish. It will also ensure that the results yielded are accurate and performed correctly.
