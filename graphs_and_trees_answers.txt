@@ -19,18 +19,21 @@
 6. What kind of graph is a binary search tree?
   A binary search tree is an directed, a-cyclic, unweighted node.
 
-Programming Questions
-For the following questions, describe in words how you could solve the problem and then do so. Use the depiction of the Binary Search Tree to refer to the
-examples.
 
 1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
 Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
-  function findValue(value) {
 
+  function checkValue(node, value) {
+    if(node === null) {
+      return null;
+    } else if (value < node.value) {
+      return this.search(node.left, value);
+    } else if (value > node.value) {
+      return this.search(node.right, value);
+    } else {
+      return node;
+    }
   }
 
-2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+**2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
 Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
-  function findDistance(value) {
-  
-  }
