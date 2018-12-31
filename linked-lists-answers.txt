@@ -43,7 +43,7 @@ We had in the else statement to set current to head, but we don't know how many 
 the last node that way we can place the new node we are creating after that one in the linked list.
 
 function push(element) {
-  let node = new Node();
+  let node = new Node(element);
   node.value = element;
   node.next = null;
 
@@ -53,7 +53,9 @@ function push(element) {
     while(current.next){
       current = current.next;
     }
+    current.next = node;
   }
+  this.size++;
 }
 
 
@@ -64,6 +66,56 @@ function push(element) {
 
   We want to compare the first element to all the other elements, then remove the duplicates, then compare the second element to all remaining elements,
   etc. Then we want to display the remaining elements.
+
+  class Node {
+    constructor(value) {
+      this.value = value;
+      this.next = null;
+    }
+  }
+  class LinkedList {
+    constructor(){
+      this.head = null;
+      this.next = null;
+    }
+    insert(value){
+      const node = new Node(value);
+      if(!this.head){
+        return this.head = node;
+      }
+      let current = this.head;
+      while(current.next){
+        current = current.next;
+      }
+        return current.next = node;
+    }
+    delete(value) {
+      if(this.head.value === value) {
+        this.head = null;
+        return;
+      }
+      let current = this.head;
+      let prev = null;
+      while(current && current.value !== value){
+        prev = current;
+        current = this.current.next;
+      }
+    }
+    deleteDuplicates(value) {
+      var current = this.head.next;
+      while(current){
+        if(this.head === current){
+          this.delete(current);
+        }
+        while(current.next) {
+          if(this.current === this.current.next){
+            this.delete(current);
+          }
+        }
+      }
+    }
+  }
+    const ll = new LinkedList();
 
 
   function removeDuplicates(nodes) {
