@@ -47,7 +47,7 @@ FUNCTION foo(array)
  END FOR
 END FUNCTION
 
-  The time complexity of the following snippet of code will be O(n).
+  The time complexity of the following snippet of code will be O(n^2).
 
 8. Determine the time complexity of the following snippet of code. It is commonly known as the Fibonacci sequence.
 
