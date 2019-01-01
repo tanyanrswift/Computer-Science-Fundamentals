@@ -5,19 +5,22 @@
   Runtime can be used as a synonym for time complexity, but it can also refer to the time duration of an algorithm.
 
 3. How is the runtime of an algorithm calculated?
-  The runtime of an algorithm is calculated but adding how many instructions the algorithm will execute as a function of the size of its input, and then it is simplified the largest term without constants. In other words, we determine
-  what the largest term is.
+  The runtime of an algorithm is calculated but adding how many instructions the algorithm will execute as a function of the size of its input, and then it is simplified
+  the largest term without constants. In other words, we determine what the largest term is.
 
-4. Name the six types of algorithm growth rates we saw in this checkpoint and list them in order of most efficient to least efficient. Now Google another algorithmic growth rate not covered and place it in the correct spot in your list.
+4. Name the six types of algorithm growth rates we saw in this checkpoint and list them in order of most efficient to least efficient. Now Google another algorithmic
+growth rate not covered and place it in the correct spot in your list.
   Constant growth
-  Logarithmic growth
   Linear growth
   Log-Linear growth
+  Logarithmic growth
   Quadratic growth
-  Exponential growth
   Cubic growth
+  Exponential growth
 
 5. Choose one of the algorithmic growth rates from the last question and make a comparison to a real-life situation.
+  One example of exponential growth could be how cells multiply. You start with one cell, and it will divide into two, then the two cells will each divide into two more each,
+  etc.
 
 6. Determine the time complexity of the following snippet of code. It is commonly known as a linear search.
 
@@ -30,6 +33,8 @@ FUNCTION linearSearch(array, target)
  RETURN false
 END FUNCTION
 
+  The time complexity of the following snippet of code will be O(n).
+
 7. Determine the time complexity of the following snippet of code.
 
 If you get stuck, read through the graphical representation section again.
@@ -41,6 +46,8 @@ FUNCTION foo(array)
    END FOR
  END FOR
 END FUNCTION
+
+  The time complexity of the following snippet of code will be O(n).
 
 8. Determine the time complexity of the following snippet of code. It is commonly known as the Fibonacci sequence.
 
@@ -56,4 +63,7 @@ FUNCTION fibonacci(number)
  END IF
 END FUNCTION
 
+  The time complexity of the following snippet of code will be O(2^n).
+
 9. Out of the code snippets you just saw, which is the most time efficient?
+  The first snippet of code (question 6) would be time most time efficient.
