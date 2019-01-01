@@ -102,33 +102,18 @@ function push(element) {
       }
     }
     deleteDuplicates(value) {
-      var current = this.head.next;
-      while(current){
-        if(this.head === current){
-          this.delete(current);
-        }
-        while(current.next) {
-          if(this.current === this.current.next){
-            this.delete(current);
+      var firstNumberToCompare = this.head;
+      while(firstNumberToCompare && firstNumberToCompare.next) {
+        var secondNumberToCompare = firstNumberToCompare.next;
+        while(secondNumberToCompare && secondNumberToCompare.next){
+          if(firstNumberToCompare.value === secondNumberToCompare.value){
+            firstNumberToCompare.next = secondNumberToCompare.next;
+            secondNumberToCompare = secondNumberToCompare.next;
+          } else {
+            secondNumberToCompare = secondNumberToCompare.next;
           }
         }
-      }
-    }
-  }
-
-
-  function removeDuplicates(nodes) {
-    current = nodes.head.next;
-    while(current){ //while there is a next node, we want to loop through all the nodes
-      if(nodes.head === nodes.current){ //if the first node is equal to the current node
-        //remove node
-      }
-      while(current.next){ //we want to loop through the nodes again as long as there is a next node
-        if(nodes.current === nodes.next){
-          //remove node
-        } else {
-          return nodes;
-        }
+        firstNumberToCompare = firstNumberToCompare.next;
       }
     }
   }
@@ -138,12 +123,62 @@ function push(element) {
   Input: a -> b -> c -> d
   Output: d -> c -> b -> a
 
-  function reverseLinkedList(head) {
-    if(!head || !head.next) {
-      return head;
+  class Node {
+    constructor(value) {
+      this.value = value;
+      this.next = null;
     }
-    let temp = reverse(head.next);
-    head.next.next = head;
-    head.next = undefined;
-    return temp;
+  }
+  class LinkedList {
+    constructor(){
+      this.head = null;
+      this.next = null;
+    }
+    insert(value){
+      const node = new Node(value);
+      if(!this.head){
+        return this.head = node;
+      }
+      let current = this.head;
+      while(current.next){
+        current = current.next;
+      }
+        return current.next = node;
+    }
+    delete(value) {
+      if(this.head.value === value) {
+        this.head = null;
+        return;
+      }
+      let current = this.head;
+      let prev = null;
+      while(current && current.value !== value){
+        prev = current;
+        current = this.current.next;
+      }
+    }
+    deleteDuplicates(value) {
+      var firstNumberToCompare = this.head;
+      while(firstNumberToCompare && firstNumberToCompare.next) {
+        var secondNumberToCompare = firstNumberToCompare.next;
+        while(secondNumberToCompare && secondNumberToCompare.next){
+          if(firstNumberToCompare.value === secondNumberToCompare.value){
+            firstNumberToCompare.next = secondNumberToCompare.next;
+            secondNumberToCompare = secondNumberToCompare.next;
+          } else {
+            secondNumberToCompare = secondNumberToCompare.next;
+          }
+        }
+        firstNumberToCompare = firstNumberToCompare.next;
+      }
+    }
+    reverseLinkedList(value) {
+      var firstNumber = this.head;
+      while(firstNumber && firstNumber.next) {
+        
+        while(firstNumber && firstNumber.next) {
+
+        }
+      }
+    }
   }
