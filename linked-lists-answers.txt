@@ -145,38 +145,13 @@ function push(element) {
       }
         return current.next = node;
     }
-    delete(value) {
-      if(this.head.value === value) {
-        this.head = null;
-        return;
-      }
-      let current = this.head;
-      let prev = null;
-      while(current && current.value !== value){
-        prev = current;
-        current = this.current.next;
-      }
-    }
-    deleteDuplicates(value) {
-      var firstNumberToCompare = this.head;
-      while(firstNumberToCompare && firstNumberToCompare.next) {
-        var secondNumberToCompare = firstNumberToCompare.next;
-        while(secondNumberToCompare && secondNumberToCompare.next){
-          if(firstNumberToCompare.value === secondNumberToCompare.value){
-            firstNumberToCompare.next = secondNumberToCompare.next;
-            secondNumberToCompare = secondNumberToCompare.next;
-          } else {
-            secondNumberToCompare = secondNumberToCompare.next;
-          }
-        }
-        firstNumberToCompare = firstNumberToCompare.next;
-      }
-    }
     reverseLinkedList(value) {
       var firstNumber = this.head;
       while(firstNumber && firstNumber.next) {
-        
-        while(firstNumber && firstNumber.next) {
+        var secondNumber = firstNumber.next
+        secondNumber = firstNumber;
+        firstNumber = secondNumber;
+        while(secondNumber && secondNumber.next) {
 
         }
       }
