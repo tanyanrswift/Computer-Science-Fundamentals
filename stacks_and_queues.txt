@@ -12,18 +12,33 @@ for each option and why?
 
 
 1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
-  First I will loop through the string like an array to find the individual characters. Then I will add the
-  characters back together to form a new string.
+  1. Create empty stack
+  2. Push all characters of string to stack
+  3. Pop all characters from stack to string
 
-  function reverseString(string) {
-    var stack = [];
-    for ( var i = 0; i < string.length; i++) {
-      stack.push(string[i]);
+  class Stack {
+    constructor(){
+      this.stack = [];
     }
-    var reverse = '';
-    while (stack.length > 0) {
-      reverse += stack.pop();
+    add(element){
+      this.stack.push(element);
     }
+    remove(){
+      return this.stack.pop();
+    }
+  }
+  function reverseString(string){
+    var characters = string.split('');
+    var stack = new Stack();
+    for (var i = 0; i < characters.length; i++){
+      stack.add(characters[i]);
+    }
+    var array = [];
+    var stackLength = stack.stack.length;
+    for (var i = 0; i < stackLength; i++){
+      array.push(stack.remove());
+    }
+    return array.join('');
   }
 
 2. Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure. Since the internal list is
@@ -44,11 +59,13 @@ not the same as defined in the checkpoint, it may help to rewrite the pseudocode
         return temp;
     }
 
-    for(var i = 0; i < queue.length-1; i++) {
-      var temp = this.dequeue();
-      this.enqueue(temp);
+    popMethod() {
+      for(var i = 0; i < this.queue.length-1; i++) {
+        var temp = this.dequeue();
+        this.enqueue(temp);
+      }
+        return this.dequeue();
     }
-      return dequeue();
   }
 
 
