@@ -18,17 +18,23 @@
 
 2. Write pseudocode for quicksort.
 
-  FUNCTION quicksort(left, right, pivot)
+  FUNCTION quicksort(pivot)
     SET pivot to last item of the collection
-    SET left to left side of pivot
     SET right to right side of pivot
 
-    WHILE pivot
+    WHILE there is an item on the left of the pivot
       IF left > pivot
         THEN swap left and pivot
       ELSE
-      
+        do nothing
       END IF
+      SET pivot to last item of the collection
+      WHILE there is an item on the left of the pivot
+        IF left > pivot
+          THEN swap left and pivot
+        ELSE
+        END IF
+      END WHILE
     END WHILE
   END FUNCTION
 
