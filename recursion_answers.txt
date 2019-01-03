@@ -24,19 +24,15 @@ recursive solution, we are using an if/else statement in order to set our base c
 5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire
 collection.
 
-  var items = [1, 2, 3];
   function countItems(items){
-    if (items.length === 0){
+    if(items.length === 0){
       return 0;
-    } else if (items.length === 1){
-      return 1;
     } else {
       var count = 0;
-      for (var i = 0; i < items.length; i++){
-        count = count + countItems(items[i]);
+      for(var i = 0; i < items.length; i++){
+        count++;
       }
-    }
-    return count;
+    } return count;
   }
 
 6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a
