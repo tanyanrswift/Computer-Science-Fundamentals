@@ -49,8 +49,7 @@ Programming Assignment:
         } else if (collection.indexOf(fish) > collection[middle]) {
           low = middle + 1;
         } else {
-          var newMiddle = middle;
-          return collection[newMiddle];
+          return middle;
         }
       }
     }
