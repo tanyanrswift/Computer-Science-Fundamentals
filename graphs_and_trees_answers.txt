@@ -1,5 +1,7 @@
 1. What is a binary tree and what makes it unique to other trees?
-  A binary tree is a data structure that has the option to have a left child and a right child coming from the root node at the top.
+  A binary tree is a data structure that has the option to have a left child and a right child coming from the root node at the top, but can only have two children. It
+  is also sorted by value, where any nodes with a value less than the root node would go on one side of the tree, and any nodes with a value greater than the root node
+  would go on the other side of the tree.
 
 2. What is a heuristic?
   A heuristic is basically a best guess approach to finding all possible paths, where an algorithm will make guesses but it won't be 100% accurate.
@@ -23,17 +25,70 @@
 1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
 Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
 
-  function checkValue(node, value) {
-    if(node === null) {
-      return null;
-    } else if (value < node.value) {
-      return this.search(node.left, value);
-    } else if (value > node.value) {
-      return this.search(node.right, value);
-    } else {
-      return node;
+  class Node {
+    constructor(data, left = null, right = null) {
+      this.data = data;
+      this.left = left;
+      this.right = right;
     }
   }
 
-**2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+  class BinarySearchTree {
+    constructor() {
+      this.root = null;
+    }
+    add(data) {
+      const node = this.root;
+      if (node === null) {
+        this.root = new Node(data);
+        return;
+      } else {
+        const searchTree = function(node) {
+        if (data < node.data) {
+          if (node.left === null) {
+            node.left = new Node(data);
+            return;
+          } else if (node.left !== null) {
+            return searchTree(node.left);
+          }
+        } else if (data > node.data) {
+          if (node.right === null) {
+            node.right = new Node(data);
+            return;
+            } else if (node.right !== null) {
+              return searchTree(node.right);
+            }
+          } else {
+          return null;
+        }
+      };
+      return searchTree(node);
+    }
+  }
+  isPresent(data) {
+    let current = this.root;
+    while (current) {
+      if (data === current.data) {
+        return 'The value exists in the binary tree.';
+      }
+      if (data < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+    return 'The value does not exist in the binary tree.';
+    }
+  }
+
+  var bst = new BinarySearchTree();
+  bst.add(1);
+  bst.add(2);
+  bst.add(3);
+  bst.add(9);
+  bst.add(15);
+  console.log(bst.isPresent(15));
+  console.log(bst.isPresent(5));
+
+2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
 Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
