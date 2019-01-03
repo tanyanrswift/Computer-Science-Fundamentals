@@ -24,15 +24,12 @@ recursive solution, we are using an if/else statement in order to set our base c
 5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire
 collection.
 
-  function countItems(items){
+function countItems(items){
     if(items.length === 0){
       return 0;
     } else {
-      var count = 0;
-      for(var i = 0; i < items.length; i++){
-        count++;
-      }
-    } return count;
+      return 1 + countItems(items.slice(1))
+    }
   }
 
 6. A palindrome is a word or phrase whose spelling is the same either direction (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a
@@ -50,6 +47,6 @@ palindrome.
   }
 
 7. Google Easter Egg: Google the term "recursion". Google will prompt you with "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
-  Recursion by definition repeating something or doing something numerous times, so Google is making a joke by repeating the search for recursion as you have already
-  searched recursion. If you were to click on the link Google provides in a way you are using recursion because you are repeating a process that you have already
-  completed once before.
+  Recursion is when a function calls itself within a function. So when we are searching for "recursion" we are "calling the function". When Google prompts us if we
+  meant to search for "recursion", it is in a way calling the original "function" within itself, as we are repeating the same process we started out with the original
+  "function".
