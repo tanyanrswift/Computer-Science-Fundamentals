@@ -89,18 +89,6 @@ function push(element) {
       }
         return current.next = node;
     }
-    delete(value) {
-      if(this.head.value === value) {
-        this.head = null;
-        return;
-      }
-      let current = this.head;
-      let prev = null;
-      while(current && current.value !== value){
-        prev = current;
-        current = this.current.next;
-      }
-    }
     deleteDuplicates(value) {
       var firstNumberToCompare = this.head;
       while(firstNumberToCompare && firstNumberToCompare.next) {
@@ -117,6 +105,14 @@ function push(element) {
       }
     }
   }
+
+  var ll = new LinkedList();
+  ll.insert('a');
+  ll.insert('c');
+  ll.insert('d');
+  ll.insert('d');
+  ll.insert('a');
+  console.log(ll.deleteDuplicates());
 
 3. Given an unsorted singly linked list, reverse it.
   Example
@@ -149,11 +145,20 @@ function push(element) {
       var firstNumber = this.head;
       while(firstNumber && firstNumber.next) {
         var secondNumber = firstNumber.next
-        secondNumber = firstNumber;
-        firstNumber = secondNumber;
-        while(secondNumber && secondNumber.next) {
-
+        secondNumber = firstNumber.value;
+        firstNumber = secondNumber.value;
+        while(firstNumber && firstNumber.next && firstNumber.next.next) {
+          var secondNumber = firstNumber.value;
+          firstNumber = secondNumber.value;
         }
       }
+      return;
     }
   }
+
+  var ll = new LinkedList();
+  ll.insert('a');
+  ll.insert('b');
+  ll.insert('c');
+  ll.insert('d');
+  console.log(ll.reverseLinkedList());
