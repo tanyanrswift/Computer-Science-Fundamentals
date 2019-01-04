@@ -39,6 +39,73 @@ Example: The value 10 exists in the tree. The value 23 does not exist in the tre
     }
     add(data) {
       const node = this.root;
+      if (node === null) { //if there is no root, create root node
+        this.root = new Node(data);
+        return;
+      } else { //otherwise, if data is less than the root node data, place on left, if data is greater than the root node data, place on right
+        const searchTree = function(node) {
+        if (data < node.data) {
+          if (node.left === null) {
+            node.left = new Node(data);
+            return;
+          } else if (node.left !== null) {
+            return searchTree(node.left);
+          }
+        } else if (data > node.data) {
+          if (node.right === null) {
+            node.right = new Node(data);
+            return;
+            } else if (node.right !== null) {
+              return searchTree(node.right);
+            }
+          } else {
+          return null;
+        }
+      };
+      return searchTree(node);
+    }
+  }
+  isPresent(data) {
+    let current = this.root;
+    while (current) { //while there is a current node, if the data is equal to the current node, our value exists in the binary tree
+      if (data === current.data) {
+        return 'The value exists in the binary tree.';
+      }
+      if (data < current.data) {//this will continue to check if the data is equal to the other nodes
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+    return 'The value does not exist in the binary tree.'; //if it cannot be found, it does not exist
+    }
+  }
+
+  var bst = new BinarySearchTree();
+  bst.add(1);
+  bst.add(3);
+  bst.add(6);
+  bst.add(10);
+  bst.add(7);
+  console.log(bst.isPresent(10));
+  console.log(bst.isPresent(23));
+
+2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
+
+  class Node {
+    constructor(data, left = null, right = null) {
+      this.data = data;
+      this.left = left;
+      this.right = right;
+    }
+  }
+  class BinarySearchTree {
+    constructor() {
+      this.root = null;
+    }
+    add(data) {
+      const node = this.root;
       if (node === null) {
         this.root = new Node(data);
         return;
@@ -65,30 +132,13 @@ Example: The value 10 exists in the tree. The value 23 does not exist in the tre
       return searchTree(node);
     }
   }
-  isPresent(data) {
-    let current = this.root;
-    while (current) {
-      if (data === current.data) {
-        return 'The value exists in the binary tree.';
-      }
-      if (data < current.data) {
-        current = current.left;
-      } else {
-        current = current.right;
-      }
+  findDistance(node1, node2) {
+    if(this.root === null) { //if there is no root node aka no data, there is no distance
+      return 0;
+    } else if (this.root > node1 && this.root > node2){//otherwise, if both nodes are less than the root node
+      
+    } else {
+
     }
-    return 'The value does not exist in the binary tree.';
-    }
+
   }
-
-  var bst = new BinarySearchTree();
-  bst.add(1);
-  bst.add(2);
-  bst.add(3);
-  bst.add(9);
-  bst.add(15);
-  console.log(bst.isPresent(15));
-  console.log(bst.isPresent(5));
-
-2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
-Example: The distance between the nodes 4 and 10 is 4. The distance between the nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
