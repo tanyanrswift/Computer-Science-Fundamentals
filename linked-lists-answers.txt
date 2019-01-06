@@ -129,6 +129,7 @@ function push(element) {
     constructor(){
       this.head = null;
       this.next = null;
+      this.prev = null;
     }
     insert(value){
       const node = new Node(value);
@@ -141,18 +142,17 @@ function push(element) {
       }
         return current.next = node;
     }
-    reverseLinkedList(value) {
-      var firstNumber = this.head;
-      while(firstNumber && firstNumber.next) {
-        var secondNumber = firstNumber.next
-        secondNumber = firstNumber.value;
-        firstNumber = secondNumber.value;
-        while(firstNumber && firstNumber.next && firstNumber.next.next) {
-          var secondNumber = firstNumber.value;
-          firstNumber = secondNumber.value;
-        }
+
+    reverseLinkedList(){
+      var current = this.head;
+      while(current != null){
+        this.next = current.next;
+        current.next = this.prev;
+        this.prev = current;
+        current = this.next;
       }
-      return;
+      this.head = this.prev;
+      console.log(this.prev);
     }
   }
 
@@ -162,3 +162,19 @@ function push(element) {
   ll.insert('c');
   ll.insert('d');
   console.log(ll.reverseLinkedList());
+
+
+  reverseLinkedList(value) {
+    var firstNumber = this.head;
+    while(firstNumber && firstNumber.next) {
+      var secondNumber = firstNumber.next
+      secondNumber = firstNumber.value;
+      firstNumber = secondNumber.value;
+      while(firstNumber && firstNumber.next && firstNumber.next.next) {
+        var secondNumber = firstNumber.value;
+        firstNumber = secondNumber.value;
+      }
+    }
+    return;
+  }
+}
