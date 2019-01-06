@@ -152,7 +152,7 @@ function push(element) {
         current = this.next;
       }
       this.head = this.prev;
-      console.log(this.prev);
+      return this;
     }
   }
 
@@ -161,20 +161,4 @@ function push(element) {
   ll.insert('b');
   ll.insert('c');
   ll.insert('d');
-  console.log(ll.reverseLinkedList());
-
-
-  reverseLinkedList(value) {
-    var firstNumber = this.head;
-    while(firstNumber && firstNumber.next) {
-      var secondNumber = firstNumber.next
-      secondNumber = firstNumber.value;
-      firstNumber = secondNumber.value;
-      while(firstNumber && firstNumber.next && firstNumber.next.next) {
-        var secondNumber = firstNumber.value;
-        firstNumber = secondNumber.value;
-      }
-    }
-    return;
-  }
-}
+  console.log(JSON.stringify(ll.reverseLinkedList()));
