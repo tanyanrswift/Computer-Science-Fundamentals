@@ -40,28 +40,10 @@
     RETURN i + 1
   END FUNCTION
 
-  FUNCTION quicksort(pivot)
-    SET pivot to last item of the collection
-    SET right to right side of pivot
-
-    WHILE there is an item on the left of the pivot
-      IF left > pivot
-        THEN swap left and pivot
-      ELSE
-        do nothing
-      END IF
-      SET pivot to last item of the collection
-      WHILE there is an item on the left of the pivot
-        IF left > pivot
-          THEN swap left and pivot
-        ELSE
-        END IF
-      END WHILE
-    END WHILE
-  END FUNCTION
-
 3. We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting
 methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+  Merge sort and quick sort are typically log linear in terms of growth rate, whereas most other sorting algorithms are quadratric in terms of growth rate. In other words, the
+  time complexity of merge sort and quick sort is less than that of other algorithms.
 
 
 4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
