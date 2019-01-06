@@ -26,6 +26,56 @@
 6. Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone
     numbers. Store this information in a hash table.
 
+    class HashTable {
+      constructor(){
+        this.array = [];
+        this.size = 100;
+      }
+
+      hash(string, max) {
+        var hash = 0;
+        for (var i = 0; i < string.length; i++) {
+          hash += string.charCodeAt(i);
+        }
+        return hash % max;
+      }
+
+      add(phoneNumber, name, address) {
+        var index = hash(phoneNumber, size);
+        if (array[index] === undefined) {
+          array[index] = [
+            [phoneNumber, name, address]
+          ];
+        } else {
+          var inserted = false;
+          for (var i = 0; i < array[index].length; i++) {
+            if (array[index][i][0] === key) {
+              array[index][i][i] = value;
+              inserted = true;
+            }
+          }
+          if (inserted === false){
+            array[index].push([phoneNumber, name, address]);
+          }
+        }
+      }
+
+      lookup(phoneNumber) {
+        var index = hash(phoneNumber, size);
+        if (array[index] === undefined) {
+          return "Nothing available.";
+        } else {
+          for (var i = 0; i < array[index].length; i++) {
+            if (array[index][i][0] === phoneNumber) {
+              return array[index][i][i];
+            } else {
+              return "Customer can not be found.";
+            }
+          }
+        }
+      }
+    }
+
     var hash = (string, max) => {
       var hash = 0;
       for (var i = 0; i < string.length; i++){
