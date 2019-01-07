@@ -155,63 +155,6 @@ console.log(storeInventory.lookup('tents'));
         return this.hash % max;
       }
 
-      add(key, value) {
-        var index = this.hashFunction(key, this.size);
-        if (this.array[index] === undefined) {
-          this.array[index] = [{
-            key, value
-          }]
-        } else {
-          var inserted = false;
-          for (var i = 0; i < this.array[index].length; i++) {
-            if (this.array[index][i].key === key) {
-              this.array[index][i][1] = value;
-              inserted = true;
-            }
-          }
-          if (inserted === false) {
-            this.array[index].push([key, value]);
-          }
-        }
-      }
-
-      lookup(key) {
-        var index = this.hashFunction(key, this.size);
-        if (!this.array[index]) {
-          return "Nothing available.";
-        } else {
-          for (var i = 0; i < this.array[index].length; i++) {
-            if (this.array[index][i].key === key) {
-              return this.array[index][i].value;
-            } else {
-              return "Not found.";
-            }
-          }
-        }
-
-      }
-    }
-
-    let newspaper = new HashTable();
-    newspaper.add('The New York Times', {publisher: 'The New York Times', date: 'December 28th, 2000', paperInfo: 'newspaper information'});
-    newspaper.add('December 28th, 2000', {publisher: 'The New York Times', date: 'December 28th, 2000', paperInfo: 'newspaper information'});
-    console.log(newspaper.lookup('The New York Times'));
-    console.log(newspaper.lookup('December 28th, 2000'));
-
-    class HashTable {
-      constructor() {
-        this.array = [];
-        this.size = 10000;
-      }
-
-      hashFunction(string, max) {
-        var hash = 0;
-        for (var i = 0; i < string.length; i++) {
-          this.hash += string.charCodeAt(i);
-        }
-        return this.hash % max;
-      }
-
       add(key1, key2, value) {
         var index = this.hashFunction(key1, key2, this.size);
         if (this.array[index] === undefined) {
@@ -221,7 +164,7 @@ console.log(storeInventory.lookup('tents'));
         } else {
           var inserted = false;
           for (var i = 0; i < this.array[index].length; i++) {
-            if (this.array[index][i].key === key1 || this.array[index][i].key === key2) {
+            if (this.array[index][i].key1 === key1 || this.array[index][i].key2 === key2) {
               this.array[index][i][1] = value;
               inserted = true;
             }
@@ -247,3 +190,8 @@ console.log(storeInventory.lookup('tents'));
         }
       }
     }
+
+    let newspaper = new HashTable();
+    newspaper.add('The New York Times', 'December 28th, 2000', {publisher: 'The New York Times', date: 'December 28th, 2000', paperInfo: 'newspaper information'});
+    console.log(newspaper.lookup('The New York Times'));
+    console.log(newspaper.lookup('December 28th, 2000'));
