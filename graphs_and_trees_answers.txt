@@ -132,29 +132,36 @@ Example: The distance between the nodes 4 and 10 is 4. The distance between the 
       return searchTree(node);
       }
     }
-    findDistance(currentAncestor, node){
-      if(currentAncestor.value === node){
+    distanceFromRoot(currentAncestor, node) {
+      if(currentAncestor.data === node) {
         return 0;
       }
-      if(currentAncestor.value > node){
+      if(currentAncestor.data > node) {
         return 1 + distanceFromRoot(currentAncestor.left, node);
       }
-      if(currentAncestor < node){
+      if(currentAncestor.data < node) {
         return 1 + distanceFromRoot(currentAncestor.right, node);
       }
     }
-    distanceBetweenNodes(currentAncestor, n1, n2){
-      if(!currentAncestor){
+    distanceBetweenNodes(currentAncestor, n1, n2) {
+      if(!currentAncestor) {
         return 0;
       }
-      if(currentAncestor.value > n1 && currentAncestor.value > n2){
+      if(currentAncestor.data > n1 && currentAncestor.data > n2){
         return distanceBetweenNodes(currentAncestor.left, n1, n2);
       }
-      if(currentAncestor.value < n1 && currentAncestor.value < n2){
+      if(currentAncestor.data < n1 && currentAncestor.data < n2) {
         return distanceBetweenNodes(currentAncestor.right, n1, n2);
       }
-      if(currentAncestor.value >= a && currentAncestor.value <= b){
-        return distanceFromRoot(currentAncestor, a) + distanceFromRoot(currentAncestor, b);
+      if(currentAncestor.data >= n1 && currentAncestor.data <= n2) {
+        return distanceFromRoot(currentAncestor, n1) + distanceFromRoot(currentAncestor, n2);
       }
     }
   }
+
+  let bst = new BinarySearchTree();
+  bst.add(8);
+  bst.add(3);
+  bst.add(4);
+  bst.add(10);
+  bst.distanceBetweenNodes(4, 10);
