@@ -163,7 +163,7 @@ console.log(storeInventory.lookup('tents'));
           }]
         } else {
           var inserted = false;
-          for (var i = 0; i < array[index].length; i++) {
+          for (var i = 0; i < this.array[index].length; i++) {
             if (this.array[index][i].key === key) {
               this.array[index][i][1] = value;
               inserted = true;
@@ -198,98 +198,52 @@ console.log(storeInventory.lookup('tents'));
     console.log(newspaper.lookup('The New York Times'));
     console.log(newspaper.lookup('December 28th, 2000'));
 
-
-        var findViaPublisher = new HashTablePublisher();
-        var findViaDate = new HashTableDate();
-        findViaPublisher.add('The New York Times', 'December 28th, 2000', paperInfo: 'newspaper information');
-        findViaDate('The Wall Street Journal', 'January 3rd, 2018', paperInfo: 'newspaper information');
-        console.log(findViaPublisher.lookup('The New York Times'));
-        console.log(findViaDate.lookup('January 3rd, 2018'));
-
-    var hash = (string, max) => {
-      var hash = 0;
-      for (var i = 0; i < string.length; i++){
-        hash += string.charCodeAt(i);
+    class HashTable {
+      constructor() {
+        this.array = [];
+        this.size = 10000;
       }
-      return hash % max;
-    }
 
-    var HashTablePublisher = function() {
-      var array = [];
-      var size = 10000;
+      hashFunction(string, max) {
+        var hash = 0;
+        for (var i = 0; i < string.length; i++) {
+          this.hash += string.charCodeAt(i);
+        }
+        return this.hash % max;
+      }
 
-      this.add = function(publisher, date, newspaper) {
-        var index = hash(publisher, size);
-        if (array[index] === undefined) {
-          array[index] = [
-            [publisher, data, newspaper]
-          ];
+      add(key1, key2, value) {
+        var index = this.hashFunction(key1, key2, this.size);
+        if (this.array[index] === undefined) {
+          this.array[index] = [{
+            key1, key2, value
+          }]
         } else {
           var inserted = false;
-          for (var i = 0; i < array[index].length; i++) {
-            if (array[index][i][0] === publisher) {
-              array[index][i][i] = value;
+          for (var i = 0; i < this.array[index].length; i++) {
+            if (this.array[index][i].key === key1 || this.array[index][i].key === key2) {
+              this.array[index][i][1] = value;
               inserted = true;
             }
           }
-          if (inserted === false){
-            array[index].push([publisher, date, newspaper]);
+          if (inserted === false) {
+            this.array[index].push([key1, key2, value]);
           }
         }
-      };
+      }
 
-      this.lookup = function(publisher) {
-        var index = hash(publisher, size);
-        if (array[index] === undefined) {
+      lookup(key1, key2) {
+        var index = this.hashFunction(key1, key2, this.size);
+        if (!this.array[index]) {
           return "Nothing available.";
         } else {
-          for (var i = 0; i < array[index].length; i++) {
-            if (array[index][i][0] === publisher) {
-              return array[index][i][i];
+          for (var i = 0; i < this.array[index].length; i++) {
+            if (this.array[index][i].key === key1 || this.array[index][i].key === key2) {
+              return this.array[index][i].value;
             } else {
-              return "Not found."
+              return "Not found.";
             }
           }
         }
-      };
-    }
-
-    var HashTableDate = function() {
-      var array = [];
-      var size = 10000;
-
-      this.add = function(publisher, date, newspaper) {
-        var index = hash(date, size);
-        if (array[index] === undefined) {
-          array[index] = [
-            [publisher, data, newspaper]
-          ];
-        } else {
-          var inserted = false;
-          for (var i = 0; i < array[index].length; i++) {
-            if (array[index][i][0] === date) {
-              array[index][i][i] = value;
-              inserted = true;
-            }
-          }
-          if (inserted === false){
-            array[index].push([publisher, date, newspaper]);
-          }
-        }
-      };
-
-      this.lookup = function(date) {
-        var index = hash(date, size);
-        if (array[index] === undefined) {
-          return "Nothing available.";
-        } else {
-          for (var i = 0; i < array[index].length; i++) {
-            if (array[index][i][0] === date) {
-              return array[index][i][i];
-            } else {
-              return "Not found."
-            }
-          }
-        }
-      };
+      }
     }
