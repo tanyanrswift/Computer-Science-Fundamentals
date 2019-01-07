@@ -39,10 +39,10 @@ Example: The value 10 exists in the tree. The value 23 does not exist in the tre
     }
     add(data) {
       const node = this.root;
-      if (node === null) { //if there is no root, create root node
+      if (node === null) {
         this.root = new Node(data);
         return;
-      } else { //otherwise, if data is less than the root node data, place on left, if data is greater than the root node data, place on right
+      } else {
         const searchTree = function(node) {
         if (data < node.data) {
           if (node.left === null) {
@@ -67,17 +67,17 @@ Example: The value 10 exists in the tree. The value 23 does not exist in the tre
   }
   isPresent(data) {
     let current = this.root;
-    while (current) { //while there is a current node, if the data is equal to the current node, our value exists in the binary tree
+    while (current) {
       if (data === current.data) {
         return 'The value exists in the binary tree.';
       }
-      if (data < current.data) {//this will continue to check if the data is equal to the other nodes
+      if (data < current.data) {
         current = current.left;
       } else {
         current = current.right;
       }
     }
-    return 'The value does not exist in the binary tree.'; //if it cannot be found, it does not exist
+    return 'The value does not exist in the binary tree.';
     }
   }
 
@@ -130,15 +130,31 @@ Example: The distance between the nodes 4 and 10 is 4. The distance between the 
         }
       };
       return searchTree(node);
+      }
     }
-  }
-  findDistance(node1, node2) {
-    if(this.root === null) { //if there is no root node aka no data, there is no distance
-      return 0;
-    } else if (this.root > node1 && this.root > node2){//otherwise, if both nodes are less than the root node
-      
-    } else {
-
+    findDistance(currentAncestor, node){
+      if(currentAncestor.value === node){
+        return 0;
+      }
+      if(currentAncestor.value > node){
+        return 1 + distanceFromRoot(currentAncestor.left, node);
+      }
+      if(currentAncestor < node){
+        return 1 + distanceFromRoot(currentAncestor.right, node);
+      }
     }
-
+    distanceBetweenNodes(currentAncestor, n1, n2){
+      if(!currentAncestor){
+        return 0;
+      }
+      if(currentAncestor.value > n1 && currentAncestor.value > n2){
+        return distanceBetweenNodes(currentAncestor.left, n1, n2);
+      }
+      if(currentAncestor.value < n1 && currentAncestor.value < n2){
+        return distanceBetweenNodes(currentAncestor.right, n1, n2);
+      }
+      if(currentAncestor.value >= a && currentAncestor.value <= b){
+        return distanceFromRoot(currentAncestor, a) + distanceFromRoot(currentAncestor, b);
+      }
+    }
   }
