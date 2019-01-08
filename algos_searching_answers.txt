@@ -13,43 +13,47 @@ It would take 7 iterations to find 'G' using linear search.
 It would take 3 iterations to find 'G' using binary search.
 
 5. Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
-If I were given an unsorted collection of a million items, I would definitely use binary search to find an item. It would be faster to use binary search because we don't know
-were the item is since it's unsorted. It could potentially take a million iterations to find an item. With binary search, we are narrowing down the number of items we are
-ultimately looking through.
+If I were given an unsorted collection of a million items, I would use linear search in order to find the item. This is because binary search can only
+work with sorted collections. There is no way to compare items if they are not sorted already in order to do a binary search.
 
 6. Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
-In this scenario, I think it would depend on what I am looking for in the collection of items. If the item I am looking for is sorted early in the collection, then I would
-probably use linear search because I would know that we would iterate over the collection and find that item quickly. Otherwise, I would use binary search to not require us
-to iterate through most of the million items.
+In this scenario, I would use binary search because it would make more sense to narrow down in the collection of items where we are looking rather
+than to look through each individual item, when our item could be potentially at the end of the list.
 
 Programming Assignment:
 1. You and a friend have set a wager to see who can find the word "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
   function findWord(collection, word){
-    var result = null, value;
-    for(var i = 0; i < collection.length; i++){
-      value = collection[i];
-      if(value === word){
-        result = i;
-        break;
+    var low = 0;
+    var high = collection.length - 1;
+
+    while(low <= high) {
+      var middle = (low + high) / 2;
+      if (collection.indexOf(word) < collection[middle]) {
+        high = middle - 1;
+      } else if (collection.indexOf(word) > collection[middle]) {
+        low = middle + 1;
+      } else {
+        var middle = middle;
+        return word;
       }
     }
-    return word;
   }
 
+  var collection = ['Aardvark', 'Albatross', 'Anteater', 'Ape'];
+  findWord(collection, 'Albatross');
+
 2. You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish.
-
     function findFishy(collection, fish){
-      var low = 0;
-      var high = collection.length - 1;
-
-      while(low <= high) {
-        var middle = (low + high) / 2;
-        if (collection.indexOf(fish) < collection[middle]) {
-          high = middle - 1;
-        } else if (collection.indexOf(fish) > collection[middle]) {
-          low = middle + 1;
-        } else {
-          return middle;
+      var result = null, value;
+      for(var i = 0; i < collection.length; i++) {
+        value = collection[i];
+        if(value === fish) {
+          result = i;
+          break;
         }
       }
+      return fish;
     }
+
+    var collection = ['blue angler', 'yellow goldfish', 'white-spotted goldfish', 'green eel'];
+    findFishy(collection, 'white-spotted goldfish');
